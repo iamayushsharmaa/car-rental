@@ -15,7 +15,14 @@ class CarListPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        title: Text('Choose Your Car'),
+        centerTitle: true,
+        automaticallyImplyLeading: false,
+        backgroundColor: Colors.white,
+        foregroundColor: Colors.black,
+      ),
+      backgroundColor: Colors.white,
       body: ListView.builder(
           itemCount: cars.length,
           itemBuilder:(context, index){
