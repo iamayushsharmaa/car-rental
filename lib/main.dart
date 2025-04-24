@@ -1,3 +1,4 @@
+import 'package:car_rental_app/presentation/pages/map_detail_page.dart';
 import 'package:car_rental_app/presentation/pages/onboarding_page.dart';
 import 'package:flutter/material.dart';
 
@@ -17,7 +18,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
-      home: OnboardingPage(),
+      home: MapDetailPage(),
     );
   }
 }

@@ -1,0 +1,76 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_map/flutter_map.dart';
+import 'package:latlong2/latlong.dart';
+
+class MapDetailPage extends StatelessWidget {
+  const MapDetailPage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      extendBodyBehindAppBar: true,
+      appBar: AppBar(
+        title: Text('Map Detail Page'),
+        backgroundColor: Colors.transparent,
+        leading: IconButton(
+            onPressed: () {
+              Navigator.pop(context);
+            },
+            icon: Icon(Icons.arrow_back)
+        ),
+      ),
+      body: Stack(
+        children: [
+          FlutterMap(
+              options: MapOptions(
+                initialCenter: LatLng(51, -0.09),
+                initialZoom: 13,
+              ),
+              children: [
+                TileLayer(
+                  urlTemplate: 'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
+                  subdomains: ['a', 'b', 'c'],
+                )
+              ]
+          ),
+          Positioned(
+              bottom: 0,
+              left: 0,
+              right: 0,
+              child: carDetailCard()
+          )
+        ],
+      )
+    );
+  }
+}
+
+
+Widget carDetailCard(){
+  return SizedBox(
+    height: 350,
+    child: Stack(
+      children: [
+        Container(
+          padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+          width: double.infinity,
+          decoration: BoxDecoration(
+            color: Colors.black54,
+            borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(30),
+                topRight: Radius.circular(30)
+            ),
+            boxShadow: [
+              BoxShadow(
+                color: Colors.black38,
+                blurRadius: 10,
+                spreadRadius: 0
+
+              )
+            ]
+          ),
+        )
+      ],
+    ),
+  );
+}
