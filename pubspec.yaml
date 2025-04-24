@@ -65,6 +65,8 @@ flutter:
     - assets/images/pump.png
     - assets/images/gps.png
     - assets/images/honda.png
+    - assets/images/maps.png
+    - assets/images/user.png
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
 
