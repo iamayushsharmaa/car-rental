@@ -65,11 +65,38 @@ Widget carDetailCard(){
                 color: Colors.black38,
                 blurRadius: 10,
                 spreadRadius: 0
+              ),
+            ]
+          ),
+          child: Column(
+            children: [
+              SizedBox(height: 20,),
+              Text(
+                'car model',
+                style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: Colors.white),
+              ),
+              SizedBox(height: 10,),
+              Row(
+                children: [
+                  Icon(Icons.directions_car, color: Colors.white, size: 16,),
+                  SizedBox(width: 10,),
+                  Text(
+                    '> car.distance km',
+                    style: TextStyle(fontSize: 14, color: Colors.white),
+                  ),
+                  SizedBox(width: 10,),
+                  Icon(Icons.battery_full, color: Colors.white, size: 14,),
+                  SizedBox(width: 5,),
+                  Text(
+                    'car.fuelCapacity',
+                    style: TextStyle(color: Colors.white, fontSize: 14),
+                  ),
 
+                ],
               )
             ]
           ),
-        )
+        ),
       ],
     ),
   );
