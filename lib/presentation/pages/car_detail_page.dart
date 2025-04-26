@@ -1,3 +1,4 @@
+import 'package:car_rental_app/presentation/pages/map_detail_page.dart';
 import 'package:car_rental_app/presentation/widgets/CarCard.dart';
 import 'package:car_rental_app/presentation/widgets/more_card.dart';
 import 'package:flutter/material.dart';
@@ -57,22 +58,30 @@ class CarDetailPage extends StatelessWidget {
                 ),
                 SizedBox(width: 20,),
                 Expanded(
-                  child: Container(
-                    height: 170,
-                    decoration: BoxDecoration(
-                        color: Color(0xffF3F3F3),
-                        borderRadius: BorderRadius.circular(20),
-                        image: DecorationImage(
-                            image: AssetImage('assets/images/maps.png'),
-                            fit: BoxFit.cover
-                        ),
-                        boxShadow: [
-                          BoxShadow(
-                              color: Colors.black12,
-                              blurRadius: 10,
-                              spreadRadius: 5
-                          )
-                        ]
+                  child: GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => MapDetailPage(car: car),),
+                      );
+                    },
+                    child: Container(
+                      height: 170,
+                      decoration: BoxDecoration(
+                          color: Color(0xffF3F3F3),
+                          borderRadius: BorderRadius.circular(20),
+                          image: DecorationImage(
+                              image: AssetImage('assets/images/maps.png'),
+                              fit: BoxFit.cover
+                          ),
+                          boxShadow: [
+                            BoxShadow(
+                                color: Colors.black12,
+                                blurRadius: 10,
+                                spreadRadius: 5
+                            )
+                          ]
+                      ),
                     ),
                   ),
                 ),

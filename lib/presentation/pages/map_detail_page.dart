@@ -1,9 +1,12 @@
+import 'package:car_rental_app/data/models/Car.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:latlong2/latlong.dart';
 
 class MapDetailPage extends StatelessWidget {
-  const MapDetailPage({super.key});
+  final Car car;
+
+  const MapDetailPage({super.key, required this.car});
 
   @override
   Widget build(BuildContext context) {
@@ -37,7 +40,12 @@ class MapDetailPage extends StatelessWidget {
               bottom: 0,
               left: 0,
               right: 0,
-              child: carDetailCard()
+              child: carDetailCard(car: car)
+          ),
+          Positioned(
+            top: 50,
+            bottom: 20 ,
+            child: Image.asset('assets/images/white_car.png'),
           )
         ],
       )
@@ -46,7 +54,7 @@ class MapDetailPage extends StatelessWidget {
 }
 
 
-Widget carDetailCard(){
+Widget carDetailCard({required Car car}){
   return SizedBox(
     height: 350,
     child: Stack(
@@ -73,7 +81,7 @@ Widget carDetailCard(){
             children: [
               SizedBox(height: 20,),
               Text(
-                'car model',
+                '${car.model}',
                 style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: Colors.white),
               ),
               SizedBox(height: 10,),
@@ -82,14 +90,14 @@ Widget carDetailCard(){
                   Icon(Icons.directions_car, color: Colors.white, size: 16,),
                   SizedBox(width: 10,),
                   Text(
-                    '> car.distance km',
+                    '>${car.distance} km',
                     style: TextStyle(fontSize: 14, color: Colors.white),
                   ),
                   SizedBox(width: 10,),
                   Icon(Icons.battery_full, color: Colors.white, size: 14,),
                   SizedBox(width: 5,),
                   Text(
-                    'car.fuelCapacity',
+                    '${car.fuelCapacity.toString()}',
                     style: TextStyle(color: Colors.white, fontSize: 14),
                   ),
 
@@ -120,16 +128,14 @@ Widget carDetailCard(){
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text('Features', style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold)),
-                  //featureIcons()
+                  featureIcons(),
                   SizedBox(height: 20,),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text('\$car.price/day',style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),),
+                      Text('\$${car.pricePerHour}/day',style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),),
                       ElevatedButton(
-                          onPressed: () {
-
-                            },
+                          onPressed: () {},
                           style: ElevatedButton.styleFrom(backgroundColor: Colors.black),
                           child: Text('Book Now', style: TextStyle(color: Colors.white),)
                       )
@@ -146,5 +152,31 @@ Widget carDetailCard(){
 
 
 Widget featureIcons(){
-  return Row();
+  return Row(
+    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    children: [
+      featureIcon(Icons.local_gas_station, 'Diesel', 'Common Rail'),
+      featureIcon(Icons.local_gas_station, 'Acceleration', '0-100km/s'),
+      featureIcon(Icons.local_gas_station, 'Cold', 'Temp Control'),
+    ]
+  );
+}
+
+Widget featureIcon(IconData icon, String title, String subtitle){
+  return Container(
+    width: 100,
+    height: 100,
+    padding: EdgeInsets.all(5),
+    decoration: BoxDecoration(
+      borderRadius: BorderRadius.circular(10),
+      border: Border.all(color: Colors.grey, width: 1)
+    ),
+    child: Column(
+      children: [
+        Icon(icon, size: 28,),
+        Text(title),
+        Text(subtitle, style: TextStyle(color: Colors.grey, fontSize: 10),),
+      ],
+    ),
+  );
 }
