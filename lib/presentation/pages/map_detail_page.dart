@@ -69,6 +69,7 @@ Widget carDetailCard(){
             ]
           ),
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               SizedBox(height: 20,),
               Text(
@@ -97,7 +98,53 @@ Widget carDetailCard(){
             ]
           ),
         ),
+        Positioned(
+            bottom: 0,
+            left: 0,
+            right: 0,
+            child: Container(
+              padding: EdgeInsets.all(20),
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.only(
+                  topRight: Radius.circular(20),
+                  topLeft: Radius.circular(20),
+                ),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.black38,
+                  ),
+                ]
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text('Features', style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold)),
+                  //featureIcons()
+                  SizedBox(height: 20,),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text('\$car.price/day',style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),),
+                      ElevatedButton(
+                          onPressed: () {
+
+                            },
+                          style: ElevatedButton.styleFrom(backgroundColor: Colors.black),
+                          child: Text('Book Now', style: TextStyle(color: Colors.white),)
+                      )
+                    ],
+                  ),
+                ],
+              ),
+            )
+        ),
       ],
     ),
   );
+}
+
+
+Widget featureIcons(){
+  return Row();
 }
