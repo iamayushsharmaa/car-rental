@@ -42,11 +42,6 @@ class MapDetailPage extends StatelessWidget {
               right: 0,
               child: carDetailCard(car: car)
           ),
-          Positioned(
-            top: 50,
-            bottom: 20 ,
-            child: Image.asset('assets/images/white_car.png'),
-          )
         ],
       )
     );
@@ -88,21 +83,20 @@ Widget carDetailCard({required Car car}){
               Row(
                 children: [
                   Icon(Icons.directions_car, color: Colors.white, size: 16,),
-                  SizedBox(width: 10,),
+                  SizedBox(width: 8,),
                   Text(
-                    '>${car.distance} km',
+                    '> ${car.distance} km',
                     style: TextStyle(fontSize: 14, color: Colors.white),
                   ),
-                  SizedBox(width: 10,),
+                  SizedBox(width: 8,),
                   Icon(Icons.battery_full, color: Colors.white, size: 14,),
                   SizedBox(width: 5,),
                   Text(
                     '${car.fuelCapacity.toString()}',
                     style: TextStyle(color: Colors.white, fontSize: 14),
                   ),
-
                 ],
-              )
+              ),
             ]
           ),
         ),
@@ -145,6 +139,11 @@ Widget carDetailCard({required Car car}){
               ),
             )
         ),
+        Positioned(
+          top: 50,
+          right: 20,
+          child: Image.asset('assets/images/white_car.png'),
+        )
       ],
     ),
   );
