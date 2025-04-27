@@ -1,8 +1,17 @@
+import 'package:car_rental_app/injection_container.dart';
 import 'package:car_rental_app/presentation/pages/map_detail_page.dart';
 import 'package:car_rental_app/presentation/pages/onboarding_page.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
-void main() {
+import 'firebase_options.dart';
+
+void main() async{
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform
+  );
+  initInjection();
   runApp(const MyApp());
 }
 
